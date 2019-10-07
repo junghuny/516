@@ -1,0 +1,36 @@
+<html>
+<title>My first Page</title>
+<body style="background-color: #000080">
+<h1>516</h1>
+<p>hello!</p>
+
+<script>
+
+
+let lowerlimit = 0;
+let upperlimit = 100;
+let message = "Is your number ";
+let k = Number(((upperlimit - lowerlimit)/2) + lowerlimit);
+let z = 25
+
+while(true) {
+  let guess = prompt(message + k + "?");
+  if (guess == ">") {
+    k = (k + z);
+    z = parseInt(z/2);
+  } else if (guess == "<") {
+    k = (k - z);
+    z = parseInt(z/2);
+  } else if (guess == "Yes" || "yes") {
+    alert ("I won!");
+    break;
+  } else {null
+  }
+}
+
+</script>
+
+
+
+</body>
+</html>
