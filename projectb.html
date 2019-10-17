@@ -1,0 +1,48 @@
+<html>
+<title>Caesar Cipher</title>
+<script>
+
+const wrapUpp = function(num){
+  if (num <=65) {
+    num += 26;
+  } else if (num >= 90){
+    num -= 26;
+  }
+  return num;
+};
+
+const wrapLow = function(num){
+  if (num <=97) {
+    num += 26;
+  } else if (num >=122) {
+    num -= 26;
+  }
+  return num;
+}
+
+let Shift = prompt("Enter Shift");
+if (Math.abs(Shift) > 26) {
+  Shift = Shift % 26
+}
+let Text = prompt("Enter text");
+let NewChar = "";
+for (i = 0; i < Text.length; i++) {
+  let c = Text[i];
+  let CharNum = c.charCodeAt(0)  // turn first letter to unicode
+  if ((CharNum >= 65) && (CharNum <=90)) {
+    CharNum += Shift;
+    CharNum = wrapUpp(CharNum);
+  }
+  if ((CharNum >=97) && (CharNum >=122)) {
+    CharNum += Shift;
+    CharNum = wrapLow(CharNum);
+  }
+  NewChar += String.fromCharCode(CharNum);
+}
+alert(NewChar);
+
+
+
+
+</script>
+</html>
