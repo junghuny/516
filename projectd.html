@@ -2,19 +2,14 @@
 <title>Haigy Paigy</title>
 <script>
 
-const hp = function () {
-  let input = prompt("Enter a sentence");
-    if (/\b(\w+)(e)\b/g.test(input)) {
-      output = input.replace(/\b(\w+)(e)\b/g, "$1_");
-      output = output1.replace(/(_)/, "e");
-    } else if ((/\b(\w+)(^e)\b/g.test(input))) {
-      output3 = input.replace(/([aeiuo]+)/g, "aig$1");
-    }
-    return output;
-};
 
-
-alert(console.log(hp));
+while (true) {
+  let input = prompt("Enter a sentence.");
+  let output = input.replace(/([aeiuoy]+)/g, "aig$1");
+  let output1 = output.replace(/\b(\w+)(aig)(e)\b/g, "$1#$3");
+  let output2 = output1.replace(/\b#\b/g, "");
+  alert(output2);
+}
 
 
 
