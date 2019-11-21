@@ -1,0 +1,48 @@
+<html>
+
+<p>Input:<br><textarea id="input" rows="20" cols="90"></textarea>
+<p><button onclick="click()">Click</button>
+<p>Output:<br><textarea id="output" rows="20" cols="90"></textarea>
+
+<script>
+
+
+function click() {
+
+  let input = document.getElementById("input").value;  //computer analysis data analysis report experimental report field report forensic report lab report materials selection report (program)development repor
+
+  input = input.replace(/\W/g," "); //Removes punctuation and extra white space.
+  input = input.replace(/\s{2,}/g, " ")
+  input = input.toUpperCase(); // Casts all words to the upper case.
+
+  let wordtoken = input.split(" "); //Counts the number of tokens and types in the text
+  let wordtype = [...new Set(wordtoken)];
+  let ratio = wordtype.length / wordtoken.length;
+  let count = 0;
+  let dictionary = {};
+
+  for (i = 0; i < wordtype.length; i++ ) {
+    for (k = 0; k < wordtoken.length; k++) {
+      if (wordtype[i] == wordtoken[k]) {
+      count = count + 1;
+      }
+    }
+    dictionary[wordtype[i]] = count;
+    count = 0;
+  }
+
+  let sortlist = Object.keys(dictionary).sort(function(a,b) {
+    return dictionary[b] - dictionary[a]
+  });
+  let output = "";
+  for (let p = 0; p < sortlist.length; p++) {
+    output += sortlist[p] + " " + dictionary[sortlist[p]] + "\n";
+  }
+  document.getElementById("output").value = "types and frequencies:" + "\n" + output + "Type/Token ratio:" + " " + ratio*100+"%";
+}
+
+
+
+
+</script>
+</html>
