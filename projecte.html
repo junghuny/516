@@ -1,21 +1,18 @@
-<html>
-
-<p>Input:<br><textarea id="input" rows="20" cols="90"></textarea>
+<p>Input:<br><textarea id="input" rows="20" cols="80"></textarea>
 <p><button onclick="click()">Click</button>
-<p>Output:<br><textarea id="output" rows="20" cols="90"></textarea>
+<p>Output:<br><textarea id="output" rows="20" cols="80"></textarea>
 
 <script>
 
-
 function click() {
 
-  let input = document.getElementById("input").value;  //computer analysis data analysis report experimental report field report forensic report lab report materials selection report (program)development repor
+  let input = document.getElementById("input").value;
 
-  input = input.replace(/\W/g," "); //Removes punctuation and extra white space.
+  input = input.replace(/\W/g, " ");
   input = input.replace(/\s{2,}/g, " ")
-  input = input.toUpperCase(); // Casts all words to the upper case.
+  input = input.toUpperCase();
 
-  let wordtoken = input.split(" "); //Counts the number of tokens and types in the text
+  let wordtoken = input.split(" ");
   let wordtype = [...new Set(wordtoken)];
   let ratio = wordtype.length / wordtoken.length;
   let count = 0;
@@ -45,4 +42,3 @@ function click() {
 
 
 </script>
-</html>
