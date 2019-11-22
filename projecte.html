@@ -18,22 +18,22 @@ function process() {
   let count = 0;
   let dictionary = {}; //dictionary is an object (e.g., cat:4)
 
-  for (i = 0; i < wordtype.length; i++ ) {      //1.runs once for each type, 3 words in array if length is 3
-    for (k = 0; k < wordtoken.length; k++) {    //3.check each token
+  for (i = 0; i < wordtype.length; i++ ) {      //runs once for each type, 3 words in array if length is 3
+    for (k = 0; k < wordtoken.length; k++) {    //check each token
       if (wordtype[i] == wordtoken[k]) {
-      count = count + 1; //4.saving results in each count
+      count = count + 1; //saving the number of word frequencies
       }
     }
-    dictionary[wordtype[i]] = count;     //2.puts type i into the dictionary
+    dictionary[wordtype[i]] = count;     //2.puts type and count i into the dictionary, e.g.,cat:4
     count = 0;  //resets count to 0
   }
 
-  let sorted = Object.keys(dictionary).sort(function(a,b) {      //enumerate names, decending frequencies
-    return dictionary[b] - dictionary[a]
+  let sorted = Object.keys(dictionary).sort(function(a,b) {      //enumerate names,
+    return dictionary[b] - dictionary[a] //decending frequencies if the value < 0
   });
   let output = "";
   for (let p = 0; p < sorted.length; p++) {
-    output += sorted[p] + " " + dictionary[sorted[p]] + "\n";
+    output += sorted[p] + " " + dictionary[sorted[p]] + "\n";  //sorted[p] = name, dicdictionary[sorted[p]] = count(value)
   }
   document.getElementById("output").value = "types and frequencies:" + "\n" + output + "Type/Token ratio:" + " " + ratio*100+"%";
 }
