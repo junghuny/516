@@ -1,44 +1,42 @@
 <p>Input:<br><textarea id="input" rows="20" cols="80"></textarea>
-<p><button onclick="click()">Click</button>
+<p><button onclick="process()">Click</button>
 <p>Output:<br><textarea id="output" rows="20" cols="80"></textarea>
 
 <script>
 
-function click() {
+function process() {
 
   let input = document.getElementById("input").value;
 
   input = input.replace(/\W/g, " ");
-  input = input.replace(/\s{2,}/g, " ")
+  input = input.replace(/\s{2,}/g, " ");
   input = input.toUpperCase();
 
-  let wordtoken = input.split(" ");
-  let wordtype = [...new Set(wordtoken)];
+  let wordtoken = input.split(" "); //a word becomes a one string.
+  let wordtype = [...new Set(wordtoken)]; // remove  with unique array(removing duplications)
   let ratio = wordtype.length / wordtoken.length;
   let count = 0;
-  let dictionary = {};
+  let dictionary = {}; //dictionary is an object (e.g., cat:4)
 
-  for (i = 0; i < wordtype.length; i++ ) {
-    for (k = 0; k < wordtoken.length; k++) {
+  for (i = 0; i < wordtype.length; i++ ) {      //1.runs once for each type
+    for (k = 0; k < wordtoken.length; k++) {    //3.check each token
       if (wordtype[i] == wordtoken[k]) {
-      count = count + 1;
+      count = count + 1; //4.saving results in each count
       }
     }
-    dictionary[wordtype[i]] = count;
+    dictionary[wordtype[i]] = count;     //2.puts type i into the dictionary
     count = 0;
   }
 
-  let sortlist = Object.keys(dictionary).sort(function(a,b) {
+  let sorted = Object.keys(dictionary).sort(function(a,b) {
     return dictionary[b] - dictionary[a]
   });
   let output = "";
-  for (let p = 0; p < sortlist.length; p++) {
-    output += sortlist[p] + " " + dictionary[sortlist[p]] + "\n";
+  for (let p = 0; p < sorted.length; p++) {
+    output += sorted[p] + " " + dictionary[sorted[p]] + "\n";
   }
   document.getElementById("output").value = "types and frequencies:" + "\n" + output + "Type/Token ratio:" + " " + ratio*100+"%";
 }
-
-
 
 
 </script>
