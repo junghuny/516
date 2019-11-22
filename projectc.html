@@ -1,58 +1,62 @@
 <html>
-<title>Leaner Modeling</title>
+<title>Leaning Module</title>
 <script>
+"use strict";
+//{} object(collection of properties: names and values)
+//[]: array(sequences of values)
+const itembank = {
+  of:["A scheme is developed for predicting the size __ the solar cycle modulation of GCR well in advance.", "I had a pain in the back __ my leg.", "a friend __ the family.", "Father was a man __ great integrity and honesty.", "a teaspoonful __ baking soda."],
+  in:["My mother was __ the kitchen.", "He almost drowned when he fell __ the river.", "The title was printed __ capital letters.", "Shaw first visited Russia __ 1927.", "the hardest decision I ever made __ my life."],
+  on:["Leave your things __ the table over there.", "Snow falling __ the mountainsides.", "He threw himself __ the bed.", "He was __ his hands and knees searching for something.", "The town is right __ the border."],
+  by:["I was attacked __ a dog.", "You can reserve the tickets __ phone.", "She earns her living __ selling insurance.", "a short story __ Charles Dickens ", "The documents need to be ready __ next Friday."],
+  with:["I saw Bob in town __ his girlfriend.", "She had her husband __ her.", "A tall gentleman __ a beard", "What will you buy __ the money?", "They were trembling __ fear."]
+};
 
 
+let model = {"of": 0, "in":0, "on":0, "by":0, "with":0};
 
-let itembank = [
-  {of:["A scheme is developed for predicting the size __ the solar cycle modulation of GCR well in advance."],
-    ["I had a pain in the back __ my leg."],
-    ["a friend __ the family."],
-    ["Father was a man __ great integrity and honesty."],
-    ["a teaspoonful __ baking soda."]}
-  {in:[" My mother was __ the kitchen."],
-    [" He almost drowned when he fell __ the river."],
-    [" The title was printed __ capital letters."],
-    [" Shaw first visited Russia __ 1927."],
-    [" the hardest decision I ever made __ my life."]}
-  {on:[" Leave your things __ the table over there."],
-    [" snow falling __ the mountainsides."],
-    [" He threw himself __ the bed."],
-    [" He was __ his hands and knees searching for something."],
-    [" The town is right __ the border."]}
-  {by:[" I was attacked __ a dog."],
-    ["You can reserve the tickets __ phone."],
-    ["She earns her living __ selling insurance."],
-    ["a short story __ Charles Dickens "],
-    ["The documents need to be ready __ next Friday."]}
-  {with:[" I saw Bob in town __ his girlfriend."],
-    [" She had her husband __ her."],
-    [" a tall gentleman __ a beard"],
-    [" What will you buy __ the money?"],
-    [" They were trembling __ fear."]}
-];
+let pList = Object.keys(itembank); //["of", "in", "on", "by", "with"]
+let ranNP = Math.floor(Math.random() * (pList.length));     //0-4
+let prep = pList[ranNP];  // 0-4
 
 
-let model = {
-  on: 0, in:0, with:0, by:0, from:0  }
+while (true){
+  let iList = itembank[prep];
+  let ranIN = Math.floor(Math.random() * (iList.length)); //0-4
+  let item = iList[ranIn];                                   //get a random item of the above prep//
+  let attempt = prompt(item);
 
-
-while(true) {
-Randitemnum = Math.flow(Math.random())*5;
-Randprepnum = Math.flow(Math.random())*5;
-
-for (k in itembank) {
-  console.log (k.Randprepnum);
-  let k.Randprepnum = p;
-  alert(p);
-  /*for (x of p) {
-    console.log (x[Randitemnum]);
-    let x[Randitemnum] = r
+  if (attempt == prep){
+    alert("Correct!");
+	changeScore (1);
+  } else {
+	let showAnswer = item.replace("__", prep)
+	alert(showAnswer);
+	changeScore (-1);
+  }
 }
+
+function changeScore(x){
+  if (prep =="of"){
+    model.of = model.of + x;
+  } else if (prep =="in"){
+    model.in = model.in + x;
+  } else if (prep =="on"){
+    model.on = model.on + x;
+  } else if (prep =="by"){
+    model.by = model.by + x;
+  } else if (prep =="with"){
+    model.with = model.with + x;
+  }
+  for (let p in model) {
+    if (model[prep]> model[p]){
+    prep = p;
+    }
+  }
+    return prep;
 }
-prompt(r)
-*/
-}
+
+
 
 </script>
 </html>
