@@ -23,7 +23,7 @@ let prep = pList[ranNP];  // 0-4
 while (true){
   let iList = itembank[prep];
   let ranIN = Math.floor(Math.random() * (iList.length)); //0-4
-  let item = iList[ranIn];                                   //get a random item of the above prep//
+  let item = iList[ranIN];                                   //get a random item of the above prep//
   let attempt = prompt(item);
 
   if (attempt == prep){
@@ -48,14 +48,14 @@ function changeScore(x){
   } else if (prep =="with"){
     model.with = model.with + x;
   }
-  for (let p in model) {
+  /*for (let p in model) {
     if (model[prep]> model[p]){
     prep = p;
     }
   }
     return prep;
 }
-
+*/
 
 
 </script>

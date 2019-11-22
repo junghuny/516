@@ -2,7 +2,9 @@
 <title>Caesar Cipher</title>
 <script>
 
-const wrapUpp = function(CharNum) {
+//ASCII code: American Standard cod for information exchanges. Every single bit represents a unique character.
+
+const wrapUpp = function(CharNum) {   //unicode number for upper case
   if (CharNum <=65) {
     CharNum += 26;
   } else if (CharNum >= 90){
@@ -11,7 +13,7 @@ const wrapUpp = function(CharNum) {
   return CharNum;
 }
 
-const wrapLow = function(CharNum){
+const wrapLow = function(CharNum){ // unicode number for lower case
   if (CharNum <=97) {
     CharNum += 26;
   } else if (CharNum >=122) {
@@ -28,7 +30,7 @@ let text = prompt("Enter text");
 let NewChar = "";
 for (i = 0; i < text.length; i++) {
   let Char = text[i];
-  let CharNum = Char.charCodeAt(0);  // turn first letter to unicode
+  let CharNum = Char.charCodeAt(0);  // return the unicode value of the first character
   if (CharNum >= 65 && CharNum <=90) {
     CharNum += shift;
     CharNum = wrapUpp(CharNum);
@@ -37,7 +39,7 @@ for (i = 0; i < text.length; i++) {
     CharNum += shift;
     CharNum = wrapLow(CharNum);
   }
-  NewChar += String.fromCharCode(CharNum);
+  NewChar += String.fromCharCode(CharNum);   //create a string from a sequence of unicode values.
 }
 alert(NewChar);
 

@@ -11,13 +11,13 @@ let lowerlimit = 0;
 let upperlimit = 100;
 let message = "Is your number ";
 let k = Number(((upperlimit - lowerlimit)/2) + lowerlimit);
-let z = 25
+let z = parseInt(k/2);
 
 while(true) {
   let guess = prompt(message + k + "?");
-  if (guess == ">") {
+  if (guess == ">") {  // bigger than 50
     k = (k + z);
-    z = parseInt(z/2);
+    z = parseInt(z/2);   //reduce decimal numbers, return integer number
   } else if (guess == "<") {
     k = (k - z);
     z = parseInt(z/2);

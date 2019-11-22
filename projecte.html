@@ -8,27 +8,27 @@ function process() {
 
   let input = document.getElementById("input").value;
 
-  input = input.replace(/\W/g, " ");
-  input = input.replace(/\s{2,}/g, " ");
-  input = input.toUpperCase();
+  input = input.replace(/\W/g, " "); //remove anything other than characters
+  input = input.replace(/\s{2,}/g, " "); //remove white spaces more than 2
+  input = input.toUpperCase(); //to change characters to uppercase
 
-  let wordtoken = input.split(" "); //a word becomes a one string.
-  let wordtype = [...new Set(wordtoken)]; // remove  with unique array(removing duplications)
+  let wordtoken = input.split(" "); //a word becomes a one string. delimiter
+  let wordtype = [...new Set(wordtoken)]; // create an array called wordtype with unique values in array(removing duplications), learned it from a study session
   let ratio = wordtype.length / wordtoken.length;
   let count = 0;
   let dictionary = {}; //dictionary is an object (e.g., cat:4)
 
-  for (i = 0; i < wordtype.length; i++ ) {      //1.runs once for each type
+  for (i = 0; i < wordtype.length; i++ ) {      //1.runs once for each type, 3 words in array if length is 3
     for (k = 0; k < wordtoken.length; k++) {    //3.check each token
       if (wordtype[i] == wordtoken[k]) {
       count = count + 1; //4.saving results in each count
       }
     }
     dictionary[wordtype[i]] = count;     //2.puts type i into the dictionary
-    count = 0;
+    count = 0;  //resets count to 0
   }
 
-  let sorted = Object.keys(dictionary).sort(function(a,b) {
+  let sorted = Object.keys(dictionary).sort(function(a,b) {      //enumerate names, decending frequencies
     return dictionary[b] - dictionary[a]
   });
   let output = "";
